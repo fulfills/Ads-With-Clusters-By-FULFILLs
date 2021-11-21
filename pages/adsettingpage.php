@@ -8,7 +8,6 @@
     function awcbf_add_adsettingpage() { 
 
         if($options = $_POST) {
-            // $options = awcbf_sanitize_for_array($options, True);
             update_option( 'awcbf_ad', $options );
         }
 
