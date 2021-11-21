@@ -18,18 +18,22 @@
 
         <div class="wrap">
             
-            <h1>Ad Settings</h1>
+            <h1><?php _e("Ad Settings");?></h1>
 
-            <h2>1. 広告設置</h2>
+            <h2>1. <?php _e("Installation Position");?></h2>
 
-            <p>広告は以下のショートコードを、ショートコードウィジェット、またはテーマファイルに直接設置することで、記事に最適な広告を表示できます。</p>
+            <p>
+                <?php _e("The Ads will be displayed where you place the following shortcode.");?><br>
+                <?php _e("It can be placed with a shortcode widget or directly in the theme file.");?>
+            </p>
+            
             <p><input type="text" value="[awcbf-ad]" class="regular-text ltr" readonly></p>
             <p>
-                <a href="<?php echo admin_url('widgets.php');?>" class="button button-primary">-> ウィジェット</a>
-                <a href="<?php echo admin_url('theme-editor.php');?>" class="button button-primary">-> テーマエディター</a>
+                <a href="<?php echo admin_url('widgets.php');?>" class="button button-primary">-> <?php _e("Widgets");?></a>
+                <a href="<?php echo admin_url('theme-editor.php');?>" class="button button-primary">-> <?php _e("Theme Editor");?></a>
             </p>
 
-            <h2>2. 広告タグ</h2>
+            <h2>2. <?php _e("Ad Tags");?></h2>
 
             <?php if($rep):?>
 
@@ -38,17 +42,17 @@
                         $ad_tab = new awcbf_write_wptable();
                         foreach($rep as $index => $list) {
                             $str = '';
-                            $str .= '<p>■ 代表語 （どのような記事クラスタかどうかを表しています。）</p>';
+                            $str .= '<p>■ '.__('Representative Words').'<br>*'.__('These shows what kind of cluster this is.').'</p>';
                             $str .= '<textarea rows="2" class="large-text code" readonly>';
                             foreach($list as $l) $str .= $l.' ';
                             $str .= '</textarea>';
-                            $str .= '<p>■ HTML TAG</p>';
+                            $str .= '<p>■ '.__('HTML TAG').'</p>';
                             $str .= '<textarea name="adtag['.$index.']" rows="7" class="large-text code">'.esc_html(stripslashes($options['adtag'][$index])).'</textarea>';
                             $ad_tab->add_row('Cluster '.$index, $str);
                         }
                         echo $ad_tab->get_html();
                     ?>
-                    <p class="submit"><input type="submit" class="button button-primary" value="変更を保存"></p>
+                    <p class="submit"><input type="submit" class="button button-primary" value="<?php _e('Save Changes');?>"></p>
                 </form>
 
             <?php else:?>

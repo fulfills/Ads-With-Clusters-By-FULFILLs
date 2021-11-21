@@ -6,7 +6,7 @@
 
         <div class="wrap">
             
-            <h1>Classify</h1>
+            <h1><?php _e("Classify");?></h1>
 
             <form class="settings">
 
@@ -42,7 +42,7 @@
 
                 <p><input type="button" name="submit" id="submit" class="button button-primary" value="<?php _e('Run');?>"></p>
 
-                <p><textarea name="status" class="large-text code" rows="2" readonly>Status: Waiting</textarea></p>
+                <p><textarea name="status" class="large-text code" rows="2" readonly>Status: <?php _e("Waiting");?></textarea></p>
 
             </form>
 
@@ -62,7 +62,7 @@
 
                 <p><input type="button" name="submit" id="submit" class="button button-primary" value="<?php _e('Run');?>"></p>
 
-                <p><textarea name="status" class="large-text code" rows="2" readonly>Status: Waiting</textarea></p>
+                <p><textarea name="status" class="large-text code" rows="2" readonly>Status: <?php _e("Waiting");?></textarea></p>
 
             </form>
 
