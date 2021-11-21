@@ -2,7 +2,6 @@
 
     if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-    // トップページ
     function awcbf_add_classifypage() { ?>
 
         <div class="wrap">
@@ -11,20 +10,20 @@
 
             <form class="settings">
 
-                <h2>Step1. Execution Settings</h2>
+                <h2>Step1. <?php _e('Execution Settings');?></h2>
 
                 <?php
                     $option_tab = new awcbf_write_wptable();
                     $option_tab->add_row(
-                        'クラスタ数',
+                        __('Number of clusters (groups)'),
                         '<input name="n_clusters" type="number" step="1" min="1" value="5" class="small-text">',
-                        'おおよその数を入力してください。'
+                        __('Enter the approximate number of article groups.')
                     );
                     $option_tab->add_row(
-                        '分析対象記事', 
+                        __('Articles to be analyzed'),
                         '
-                            <p><label><input name="target" type="radio" value="all" checked=>すべての記事</label></p>
-                            <p><label><input name="target" type="radio" value="only_publish">公開済み記事のみ</label></p>
+                            <p><label><input name="target" type="radio" value="all" checked=>'.__('All Articles').'</label></p>
+                            <p><label><input name="target" type="radio" value="only_publish">'.__('Only "Publish"').'</label></p>
                         '
                     );
                     echo $option_tab->get_html();
@@ -34,14 +33,14 @@
 
             <form class="embedding">
 
-                <h2>Step2. Get Title Vectors (Automatically)</h2>
+                <h2>Step2. <?php _e("Get Title Vectors (Automatically)");?></h2>
                 
                 <p>
-                    記事タイトルを自動分類のために、ベクトルに変換します。すべて自動的に行われますので、心配はいりません。<br>
-                    準備ができたら、「実行する」ボタンを押してください。
+                    <?php _e("Convert article titles into a numeric vector for classification.");?><br>
+                    <?php _e("This is all done automatically, so you don't need to worry about it.");?><br>
                 </p>
 
-                <p><input type="button" name="submit" id="submit" class="button button-primary" value="実行する"></p>
+                <p><input type="button" name="submit" id="submit" class="button button-primary" value="<?php _e('Run');?>"></p>
 
                 <p><textarea name="status" class="large-text code" rows="2" readonly>Status: Waiting</textarea></p>
 
@@ -49,19 +48,19 @@
 
             <form class="classify">
 
-                <h2>Step3. Classify (Automatically)</h2>
+                <h2>Step3. <?php _e("Classify (Automatically)");?></h2>
 
                 <p>
-                    生成したベクトルをもとに、記事を分類します。<br>
-                    準備ができたら、「実行する」ボタンを押してください。
+                    <?php _e('Classify the articles based on the generated vectors.');?><br>
+                    <?php _e('When you are ready, click the "Run" button.');?>
                 </p>
 
 
                 <?php if(get_option( 'awcbf_ad', False )):?>
-                <p class="chui">2回目以降の場合、クラスタが新しくなるため、広告設定がリセットされます。</p>
+                <p class="chui"><?php _e("Since the cluster will be renewed, the ad settings will be reset at the same time.");?></p>
                 <?php endif;?>
 
-                <p><input type="button" name="submit" id="submit" class="button button-primary" value="実行する"></p>
+                <p><input type="button" name="submit" id="submit" class="button button-primary" value="<?php _e('Run');?>"></p>
 
                 <p><textarea name="status" class="large-text code" rows="2" readonly>Status: Waiting</textarea></p>
 
@@ -76,7 +75,7 @@
 
                     $status_obj = $('form.embedding textarea[name="status"]');
 
-                    $status_obj.val('実行中（時間がかかります。しばらくお待ち下さい。）');
+                    $status_obj.val('<?php _e("Running...");?>\n<?php _e("This will take some time. Please wait a moment.");?>');
 
                     $.ajax({
                     dataType: "text",
@@ -90,11 +89,11 @@
                     })
                     .done( (data) => {
                         console.log(data);
-                        if(data === '') $status_obj.val('完了! Step3に進んでください。');
+                        if(data === '') $status_obj.val('<?php _e("Done! Please proceed to Step 3.");?>');
                         else $status_obj.val(data);
                     })
                     .fail( function(){
-                        $status_obj.val('失敗しました。');
+                        $status_obj.val('<?php _e("Error.");?>');
                     } );
 
                 });
@@ -103,7 +102,7 @@
 
                     $status_obj = $('form.classify textarea[name="status"]');
 
-                    $status_obj.val('実行中（時間がかかります。しばらくお待ち下さい。）');
+                    $status_obj.val('<?php _e("Running...");?>\n<?php _e("This will take some time. Please wait a moment.");?>');
 
                     $.ajax({
                     dataType: "text",
@@ -117,11 +116,11 @@
                     })
                     .done( (data) => {
                         console.log(data);
-                        if(data === '') $status_obj.val('完了! Step3に進んでください。');
+                        if(data === '') $status_obj.val('<?php _e("Done! Please proceed to the ad settings.");?>');
                         else $status_obj.val(data);
                     })
                     .fail( function(){
-                        $status_obj.val('失敗しました。');
+                        $status_obj.val('<?php _e("Error.");?>');
                     } );
 
                 });
