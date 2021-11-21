@@ -24,9 +24,29 @@ function awcbf_sanitize_for_array($obj, $is_textarea = 0) {
 
 load_plugin_textdomain('ads-with-clusters-by-fulfills');
 
+// Include JS
+include 'js/core.php';
+
+// Include Common Parts
+include 'common.php';
+
+// Include AJAX
+include 'php/get-embeddings.php';
+include 'php/classify.php';
+
+// Add Pages
+include 'pages/aboutus.php';
+include 'pages/classifypage.php';
+include 'pages/adsettingpage.php';
+
+// Add Shortcode(s)
+include 'php/shortcodes.php';
+
 function awcbf_add_pages() {
     global $AWCBF_MAIN_SLUG;
     add_menu_page( 'page_title', __('Ads with Clusters'), 'publish_posts', $AWCBF_MAIN_SLUG, 'awcbf_add_toppage', 'dashicons-email-alt', 8);
     add_submenu_page( $AWCBF_MAIN_SLUG, __('About Us'), __('About Us'), 'publish_posts', $AWCBF_MAIN_SLUG, 'awcbf_add_toppage' );
+    add_submenu_page( $AWCBF_MAIN_SLUG, __('Classify'), __('Classify'), 'publish_posts', "$AWCBF_MAIN_SLUG-classify", 'awcbf_add_classifypage' );
+    add_submenu_page( $AWCBF_MAIN_SLUG, __('Ad Setting'), __('Ad Setting'), 'publish_posts', "$AWCBF_MAIN_SLUG-adsetting", 'awcbf_add_adsettingpage' );
 }
 add_action('admin_menu', 'awcbf_add_pages');
