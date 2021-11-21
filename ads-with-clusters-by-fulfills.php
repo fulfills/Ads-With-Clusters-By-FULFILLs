@@ -2,7 +2,7 @@
 /*
 Plugin Name: Ads With Clusters By FULFILLs
 Plugin URI: https://fulfills.jp/
-Description: This is Test.
+Description: Automatically generate groups of posts based on the titles of the posts, and place suitable ads for each group.
 Author: FULFILLs
 Author URI: https://fulfills.jp/
 Domain Path: /languages/

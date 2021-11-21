@@ -10,10 +10,9 @@ Requires PHP: 7.0
 
 == Description ==
 
-* Set up a contact form by simply inserting a shortcode into a page.
-* Add and edit fields in the contact form while reviewing the preview.
-* This plugin receive all of your visitors' inquiries.
-* Reply to inquiries using this plugin
+* This plugin can automatically generate groups of posts based on the titles of the posts, and place suitable ads for each group.
+    * Use K-Means Method to automatically categorize your articles without any hassle on your part.
+* It is currently under development and only Japanese is supported at this time. We plan to add support for other languages in the future.
 
 == Installation ==
 
@@ -42,6 +41,6 @@ OR…
 == Changelog ==
 
 = 1.0.0 =
-- Released: !
+- Released
 
 == Upgrade notice ==
