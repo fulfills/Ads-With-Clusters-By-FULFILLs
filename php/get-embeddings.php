@@ -29,7 +29,7 @@
         $posts_array = get_posts( $args );
         $TITLEs = array_column($posts_array, 'post_title', 'ID');
 
-        $url = 'http://corpus.fulfills.jp';
+        $url = 'https://corpus.fulfills.jp';
         $data = [
             'data' => $TITLEs
         ];
