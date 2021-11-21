@@ -23,8 +23,12 @@
 
             <h2>1. 広告設置</h2>
 
-            <p>広告は、ウィジェットまたは以下のショートコードをテーマに直接設置することで、記事に最適な広告を表示できます。</p>
-            <input type="text" value="[awcbf-ad]" class="regular-text ltr" readonly>
+            <p>広告は以下のショートコードを、ショートコードウィジェット、またはテーマファイルに直接設置することで、記事に最適な広告を表示できます。</p>
+            <p><input type="text" value="[awcbf-ad]" class="regular-text ltr" readonly></p>
+            <p>
+                <a href="<?php echo admin_url('widgets.php');?>" class="button button-primary">-> ウィジェット</a>
+                <a href="<?php echo admin_url('theme-editor.php');?>" class="button button-primary">-> テーマエディター</a>
+            </p>
 
             <h2>2. 広告タグ</h2>
 
