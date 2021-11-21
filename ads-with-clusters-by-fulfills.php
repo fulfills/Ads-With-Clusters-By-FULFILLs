@@ -28,7 +28,7 @@ load_plugin_textdomain('ads-with-clusters-by-fulfills');
 include 'js/core.php';
 
 // Include Common Parts
-include 'common.php';
+include 'php/common.php';
 
 // Include AJAX
 include 'php/get-embeddings.php';
