@@ -80,7 +80,7 @@
 
         // K-Means
         $vectors = array_column($data, 1);
-        $k = $_REQUEST['n_clusters'];
+        $k = awcbf_sanitize_for_array($_REQUEST['n_clusters']);
 
         // Check
         if($k <= 1) {

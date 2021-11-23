@@ -5,7 +5,7 @@
 		header('Content-type: text/plain; charset= UTF-8');
 
         // switch()
-        if($_REQUEST['target'] === 'all') {
+        if(awcbf_sanitize_for_array($_REQUEST['target']) === 'all') {
 
             $args = array(
                 'posts_per_page'   => -1,
@@ -15,7 +15,7 @@
             );
 
         }
-        elseif($_REQUEST['target'] === 'only_publish') {
+        elseif(awcbf_sanitize_for_array($_REQUEST['target']) === 'only_publish') {
 
             $args = array(
                 'posts_per_page'   => -1,
