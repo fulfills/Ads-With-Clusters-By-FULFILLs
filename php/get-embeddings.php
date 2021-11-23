@@ -45,7 +45,7 @@
 
         // ERROR CHECK
         if(!$output['flag']) {
-            echo $output['message'];
+            echo esc_html($output['message']);
             wp_die();
         }
 
