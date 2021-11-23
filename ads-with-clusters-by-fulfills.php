@@ -6,7 +6,7 @@ Description: Automatically generate groups of posts based on the titles of the p
 Author: FULFILLs
 Author URI: https://fulfills.jp/
 Domain Path: /languages/
-Version: 1.0.1
+Version: 1.0.0
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
