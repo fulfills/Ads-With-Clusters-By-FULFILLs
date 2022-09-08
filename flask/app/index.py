@@ -6,9 +6,15 @@ app = Flask(__name__)
 import MeCab
 mecab = MeCab.Tagger('-Ochasen -d /usr/lib/aarch64-linux-gnu/mecab/dic/mecab-ipadic-neologd')
 
-# fastText
-import fasttext
-embed_model = fasttext.load_model('jawiki_fasttext.bin')
+# OTHER LIBRARY
+import requests
+import numpy as np
+
+# 単語の平均ベクトルを抽出
+def get_mean_vector(words):
+    v = list(requests.post('http://app-fasttext:80/', json=words).json().values())
+    v = np.array(v).mean(axis=0).tolist()
+    return v
 
 @app.route("/", methods=["POST"])
 def index():
@@ -20,7 +26,7 @@ def index():
     titles = {id: [line.split()[0] for line in mecab.parse(title).splitlines() if "名詞" in line.split()[-1]] for id, title in titles.items()}
 
     # {id: [title-words, vector]}とする
-    titles = {id: [words, embed_model.get_sentence_vector(" ".join(words)).astype(str).tolist()] for id, words in titles.items()}
+    titles = {id: [words, get_mean_vector(words)] for id, words in titles.items()}
 
     # import codecs
     # print(titles, file=codecs.open('tmp.txt', 'w', 'utf-8'))
