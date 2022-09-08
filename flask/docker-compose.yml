@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  app-awcbf:
+    build: .
+    container_name: app-awcbf
+    restart: always
+    volumes:
+      - ./app:/app
+    environment:
+      VIRTUAL_HOST: corpus.fulfills.jp
+      LETSENCRYPT_HOST: corpus.fulfills.jp
+      LETSENCRYPT_EMAIL: web@ksugahara.com
+    networks:
+      - qiita4you_fasttext-api-network
+      - qiita4you_nginx-proxy-network
+
+networks:
+  qiita4you_fasttext-api-network:
+    external: true
+  qiita4you_nginx-proxy-network:
+    external: true
