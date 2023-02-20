@@ -12,7 +12,7 @@ import numpy as np
 
 # 単語の平均ベクトルを抽出
 def get_mean_vector(words):
-    v = list(requests.post('http://app-fasttext:80/', json=words).json().values())
+    v = list(requests.post('http://fasttext-vector-api:80/', json=words).json().values())
     v = np.array(v).mean(axis=0).tolist()
     return v
 
