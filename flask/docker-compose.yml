@@ -12,11 +12,11 @@ services:
       LETSENCRYPT_HOST: corpus.fulfills.jp
       LETSENCRYPT_EMAIL: web@ksugahara.com
     networks:
-      - qiita4you_fasttext-api-network
-      - qiita4you_nginx-proxy-network
+      - nginx-network
+      - fasttext-vector-api
 
 networks:
-  qiita4you_fasttext-api-network:
+  nginx-network:
     external: true
-  qiita4you_nginx-proxy-network:
+  fasttext-vector-api:
     external: true
